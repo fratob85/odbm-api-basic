@@ -1,5 +1,4 @@
 import React from 'react';
-import PagerItem from "./PagerItem";
 
 export default function PagerList({totItems, curPage, setCurPage, errorMessage}) {
         if (errorMessage !== '' || totItems === 1) {

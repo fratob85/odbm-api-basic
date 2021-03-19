@@ -6,8 +6,6 @@ export default function PagerItem({page, setCurPage}) {
     }
 
     return(
-        <li className="page" key={page}>
-            <button onClick={() => changePage(page)}>{page}</button>
-        </li>
+        <button className="page" key={page} onClick={() => changePage(page)}>{page}</button>
     );
 }

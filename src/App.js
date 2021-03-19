@@ -40,8 +40,8 @@ function App() {
     }
 
     return (
-        <div className="App">
-            <h1 className="text-3xl m-7">I nostri film</h1>
+        <div className="App h-full flex flex-wrap justify-center">
+            <h1 className="text-3xl mt-6 mb-0">I nostri film</h1>
             <form className="my-8 flex content-center justify-center w-full">
                 <input name="search"
                        id="search"

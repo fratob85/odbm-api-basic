@@ -11,7 +11,7 @@ export default function MovieList({movies, curPage, errorMessage}) {
     };
 
     return (
-        <div className="main-content h-full">
+        <div className="main-content h-full flex flex-wrap max-w-7xl justify-center">
             <MovieItems />
         </div>
     );

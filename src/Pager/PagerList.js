@@ -60,7 +60,7 @@ export default function PagerList({totItems, curPage, setCurPage, errorMessage})
         };
 
         return (
-            <div className="bg-white px-4 py-3 flex items-center justify-between border-t border-gray-200 sm:px-6 mt-20 pt-10">
+            <div className="bg-white px-4 py-3 flex items-center justify-between border-t border-gray-200 sm:px-6 mt-3 pt-10 w-full">
                 <nav className="relative z-0 inline-flex rounded-md shadow-sm justify-center w-full" aria-label="Pagination">
                     <FirstPageLink />
                     <PrevPageLink />

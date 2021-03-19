@@ -19,17 +19,16 @@ function App() {
 
     useEffect(() => {
         const getMovies = async () => {
-            await fetch(basicMovieDataPath + '&s='+search + '&page='+curPage)
-                .then(res => res.json())
-                .then(apiResult => {
-                    if (apiResult.Response !== "False") {
-                        setMovies(apiResult.Search)
-                        setTotPages(Math.ceil(apiResult.totalResults/ITEMS_PER_PAGE));
-                        setErrorMessage('');
-                    } else {
-                        setErrorMessage(apiResult.Error);
-                    }
-                });
+            let response = await fetch(basicMovieDataPath + '&s='+search + '&page='+curPage);
+            let apiResult = await response.json();
+
+            if (apiResult.Response !== "False") {
+                setMovies(apiResult.Search)
+                setTotPages(Math.ceil(apiResult.totalResults/ITEMS_PER_PAGE));
+                setErrorMessage('');
+            } else {
+                setErrorMessage(apiResult.Error);
+            }
         };
 
         getMovies();
@@ -42,20 +41,23 @@ function App() {
 
     return (
         <div className="App">
-            <h1>My favorite movies</h1>
-            <form>
+            <h1 className="text-3xl m-7">I nostri film</h1>
+            <form className="my-8 flex content-center justify-center w-full">
                 <input name="search"
                        id="search"
+                       className="rounded-l-lg p-3 border mx-8 text-gray-800 border-gray-200 bg-white w-full lg:3/6 md:w-2/3"
+                       placeholder="Cerca un film..."
                        key="search"
                        type="search"
                        onBlur={manageChangeSearch} />
             </form>
             <MovieList movies={movies}
-                       albumSelected={curPage}
+                       curPage={curPage}
                        errorMessage={errorMessage} />
             <PagerList totItems={totPages}
-                       errorMessage={errorMessage}
-                       setCurPage={setCurPage} />
+                       curPage={curPage}
+                       setCurPage={setCurPage}
+                       errorMessage={errorMessage} />
         </div>
     );
 }
